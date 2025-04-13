@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,21 +50,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA-l--9DSuvFve-FfUOAVyK5MRHuTEW5vM',
-    appId: '1:743705248234:android:73aa0427c3bbff8a3bb293',
-    messagingSenderId: '743705248234',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['API_KEY_ANDROID'] ?? "",
+    appId: dotenv.env['APP_ID_ANDROID'] ?? "",
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? "",
     projectId: 'flutter-chat-app-711db',
     storageBucket: 'flutter-chat-app-711db.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCcT5hMUARajEc_LRoDbvH9WerXdNGfHRw',
-    appId: '1:743705248234:ios:eee16d7422436b303bb293',
-    messagingSenderId: '743705248234',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['API_KEY_IOS'] ?? "",
+    appId: dotenv.env['APP_ID_IOS'] ?? "",
+    messagingSenderId: dotenv.env['MESSAGING_SENDER_ID'] ?? "",
     projectId: 'flutter-chat-app-711db',
     storageBucket: 'flutter-chat-app-711db.firebasestorage.app',
     iosBundleId: 'com.example.chatApp',
   );
-
 }
